@@ -44,6 +44,20 @@ function Icon({ name, size = 22 }) {
   return <svg {...shared}>{paths[name] || paths.detail}</svg>;
 }
 
+function LogoMark({ tone = "dark" }) {
+  const letters = tone === "light" ? "#241B17" : "#F2EBDD";
+  return <svg className="brand-mark" viewBox="0 0 160 160" role="img" aria-label="Monograma Jr">
+    <path d="M35 35h70v11H77v62c0 25-15 39-38 35l1-12c16 3 24-6 24-24V46H35V35Z" fill={letters} />
+    <path d="M84 73h12l1 13c7-11 18-16 31-13v13c-17-2-30 8-30 29v27H84V73Z" fill={letters} />
+    <path d="M112 33h25v25h-7V45l-27 27-6-6 27-26h-12v-7Z" fill="#B47A45" />
+    <path d="M30 151h100" stroke="#B47A45" strokeWidth="2" />
+  </svg>;
+}
+
+function BrandName() {
+  return <span className="brand-name">Jr Móveis<small>Planejados</small></span>;
+}
+
 function SectionHeading({ eyebrow, title, text, light = false }) {
   return <div className={`section-heading${light ? " section-heading--light" : ""}`}>
     <span className="eyebrow">{eyebrow}</span>
@@ -272,8 +286,7 @@ export default function Site() {
   return <>
     <header className={`site-header${scrolled ? " site-header--solid" : ""}`}>
       <a className="brand" href="#inicio" aria-label={`${business.name}, início`} onClick={() => setMenuOpen(false)}>
-        <span className="brand-mark">JR<span>·</span></span>
-        <span className="brand-name">{business.name}<small>marcenaria sob medida</small></span>
+        <LogoMark /><BrandName />
       </a>
       <button ref={menuToggleRef} className="menu-toggle" type="button" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen(!menuOpen)}>
         <span /><span />
@@ -288,8 +301,7 @@ export default function Site() {
     <aside id="mobile-menu" className={`menu-drawer${menuOpen ? " menu-drawer--open" : ""}`} aria-label="Menu de navegação" aria-hidden={!menuOpen} inert={!menuOpen}>
       <div className="menu-drawer-header">
         <a className="brand" href="#inicio" aria-label={`${business.name}, início`} onClick={() => setMenuOpen(false)}>
-          <span className="brand-mark">JR<span>·</span></span>
-          <span className="brand-name">{business.name}<small>marcenaria sob medida</small></span>
+          <LogoMark /><BrandName />
         </a>
         <button ref={menuCloseRef} className="menu-close" type="button" aria-label="Fechar menu" onClick={() => setMenuOpen(false)}><span /><span /></button>
       </div>
@@ -359,10 +371,10 @@ export default function Site() {
         <div className="about-copy reveal">
           <span className="eyebrow">A marcenaria</span>
           <h2>Madeira boa tem<br /><em>história para contar.</em></h2>
-          <p>Na Jr Moveis palnejados, acreditamos que uma casa fica completa quando cada espaço tem propósito — e um pouco de quem vive nele.</p>
+          <p>Na Jr Móveis Planejados, acreditamos que uma casa fica completa quando cada espaço tem propósito — e um pouco de quem vive nele.</p>
           <p>Unimos o saber da marcenaria artesanal a soluções atuais de design e organização. Escutamos, desenhamos e fazemos com calma, precisão e respeito pelo seu projeto.</p>
           <a className="text-link" href="#processo">Conheça nosso jeito de fazer <Icon name="arrow" size={18} /></a>
-          <div className="about-signature">Jr Moveis palnejados <span>— móveis feitos para ficar</span></div>
+          <div className="about-signature">Jr Móveis Planejados <span>— móveis feitos para ficar</span></div>
         </div>
       </section>
 
@@ -465,7 +477,7 @@ export default function Site() {
 
     <footer className="footer">
       <div className="footer-main">
-        <div className="footer-about"><a className="brand brand--footer" href="#inicio"><span className="brand-mark">JR<span>·</span></span><span className="brand-name">{business.name}<small>marcenaria sob medida</small></span></a><p>O cuidado artesanal da madeira, o desenho que combina com você. Móveis planejados para viver por muitos anos.</p><a href={business.instagram} className="footer-social" aria-label="Instagram da marcenaria" target="_blank" rel="noreferrer"><Icon name="instagram" /></a></div>
+        <div className="footer-about"><a className="brand brand--footer" href="#inicio"><LogoMark /><BrandName /></a><p>O cuidado artesanal da madeira, o desenho que combina com você. Móveis planejados para viver por muitos anos.</p><a href={business.instagram} className="footer-social" aria-label="Instagram da marcenaria" target="_blank" rel="noreferrer"><Icon name="instagram" /></a></div>
         <div className="footer-links"><h3>Navegue</h3>{navItems.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</div>
         <div className="footer-links footer-contact"><h3>Fale com a gente</h3><a href={business.whatsapp ? `https://wa.me/${business.whatsapp}` : "#contato"}>{business.phone}</a><a href={`mailto:${business.email}`}>{business.email}</a><span>{business.address}</span><a href={business.instagram} target="_blank" rel="noreferrer">Instagram <Icon name="arrow" size={14} /></a></div>
       </div>

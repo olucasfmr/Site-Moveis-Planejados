@@ -4,12 +4,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        walnut: "#5C3A21",
-        honey: "#A9744F",
-        linen: "#F2EDE6",
-        ivory: "#FAF8F5",
-        graphite: "#2B2B33",
-        gold: "#C9A24B"
+        cafe: "#241B17",
+        walnut: "#4A3026",
+        madeira: "#78513D",
+        honey: "#B47A45",
+        sand: "#D8C6AA",
+        linen: "#EBE2D0",
+        ivory: "#F2EBDD",
+        graphite: "#241B17",
+        gold: "#B47A45"
       }
     }
   },
